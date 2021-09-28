@@ -12,15 +12,23 @@ struct CScoreInitResult;
 class CGameControllerDDRace : public IGameController
 {
 public:
+	class CFlag *m_apFlags[2];
+	
 	CGameControllerDDRace(class CGameContext *pGameServer);
 	~CGameControllerDDRace();
 
+	virtual void DoWincheck();
+	virtual bool CanBeMovedOnBalance(int ClientID);
+	
+	virtual bool OnEntity(int Index, vec2 Pos);
+	virtual int OnCharacterDeath(class CCharacter *pVictim, class CPlayer *pKiller, int Weapon);
+	
 	void OnCharacterSpawn(class CCharacter *pChr) override;
 	void HandleCharacterTiles(class CCharacter *pChr, int MapIndex) override;
 
 	void OnPlayerDisconnect(class CPlayer *pPlayer, const char *pReason) override;
 
-	void Tick() override;
+	void Tick();
 
 	void DoTeamChange(class CPlayer *pPlayer, int Team, bool DoChatMsg = true) override;
 
