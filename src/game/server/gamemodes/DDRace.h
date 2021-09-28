@@ -28,7 +28,7 @@ public:
 
 	void OnPlayerDisconnect(class CPlayer *pPlayer, const char *pReason) override;
 
-	void Tick();
+	void Tick() override;
 
 	void DoTeamChange(class CPlayer *pPlayer, int Team, bool DoChatMsg = true) override;
 
